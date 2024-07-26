@@ -1,0 +1,6 @@
+{
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "notebook.formatOnSave.enabled": true,
+    "editor.formatOnPaste": true
+}
