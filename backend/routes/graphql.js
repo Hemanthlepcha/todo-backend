@@ -16,7 +16,7 @@ const graphql = (app) => {
     createHandler({
       schema: AppSchema,
       context: ({ raw }) => {
-        // console.log("context User:", raw.userId);
+        console.log("context", raw.userId);
         return { user: raw.userId || null };
       },
     })

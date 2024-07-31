@@ -16,27 +16,25 @@ const CreateTodo = {
       type: new GraphQLNonNull(TodoInputType),
     },
   },
-  resolve: combineResolvers(
-    isAuthenticated,
-    async (parent, { input }, context) => {
-      console.log("Context", context);
-      const { id, title, description, completed } = input;
-      try {
-        const todo = await db.todo.create({
-          id,
-          title,
-          description,
-          completed,
-          UserId: context.userId,
-        });
+  resolve: combineResolvers(isAuthenticated, async (_, { input }, user) => {
+    // console.log("create Todo Context", user.user);
+    // console.log(input);
+    const { id, title, description, completed } = input;
+    try {
+      const todo = await db.todo.create({
+        id,
+        title,
+        description,
+        completed,
+        UserId: user.user,
+      });
 
-        // console.log(todo);
-        return todo;
-      } catch (err) {
-        throw new Error(err.message);
-      }
+      console.log("backend todo", todo);
+      return todo;
+    } catch (err) {
+      throw new Error(err.message);
     }
-  ),
+  }),
 };
 
 export default CreateTodo;

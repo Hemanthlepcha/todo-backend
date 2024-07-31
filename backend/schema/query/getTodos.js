@@ -11,12 +11,12 @@ import { connectionArgs } from "graphql-relay";
 
 const getTodos = {
   type: new GraphQLList(TodoType),
-  // args: {
-  //   ...connectionArgs,
-  //   filter: { type: TodoFilterType },
-  // },
+  args: {
+    ...connectionArgs,
+    filter: { type: TodoFilterType },
+  },
   resolve: combineResolvers(isAuthenticated, async (parent, args, { user }) => {
-    // console.log("context", user);
+    console.log("context getTodo", user);
     try {
       const todos = await db.todo.scope("deleted").findAll({
         where: {
@@ -25,7 +25,7 @@ const getTodos = {
           // scope is a feature in sequelize that allows you to define a set of predefined conditions that can be used to filter out results
         },
       });
-      // console.log(todos);
+      // console.log(todos); g
       // const filter = Filter(args.filter, args.accountId);
       // return await GlobalService.fetchAndPrepareData(
       //   TransactionService,

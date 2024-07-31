@@ -2,7 +2,7 @@ import {
   createRelayEdges,
   createRelayPageInfo,
   validateAndCalculateOffsetLimit,
-} from "./utils";
+} from "./utils.js";
 
 class GlobalService {
   static async fetchAndPrepareData(service, filter, args) {

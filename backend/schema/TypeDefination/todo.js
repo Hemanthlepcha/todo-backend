@@ -12,18 +12,19 @@ import { connectionDefinitions } from "graphql-relay";
 export const TodoType = new GraphQLObjectType({
   name: "TodoType", // Name of the type
   fields: () => ({
-    id: { type: new GraphQLNonNull(GraphQLString) }, // This can be optional if auto-generated
+    id: { type: new GraphQLNonNull(GraphQLString) },
     title: { type: new GraphQLNonNull(GraphQLString) },
     description: { type: new GraphQLNonNull(GraphQLString) },
     completed: { type: new GraphQLNonNull(GraphQLBoolean) },
     UserId: { type: new GraphQLNonNull(GraphQLID) },
+    order: { type: new GraphQLNonNull(GraphQLInt) },
   }),
 });
 
 export const TodoInputType = new GraphQLInputObjectType({
   name: "TodoInputType",
   fields: () => ({
-    id: { type: GraphQLID }, // This can be optional if auto-generated
+    id: { type: new GraphQLNonNull(GraphQLID) },
     title: { type: new GraphQLNonNull(GraphQLString) },
     description: { type: new GraphQLNonNull(GraphQLString) },
     completed: { type: GraphQLBoolean },
