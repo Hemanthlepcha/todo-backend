@@ -6,7 +6,18 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon backend/server.js"
+    "start": "nodemon src/server.js",
+    "db:migrate": "sequelize db:migrate",
+    "db:seed": "sequelize db:seed:all",
+    "db:migrate:undo": "sequelize db:migrate:undo",
+    "db:migrate:undo:all": "sequelize db:migrate:undo:all",
+    "db:migrate:stage": "sequelize db:migrate --env staging",
+    "db:migrate:stage:undo": "sequelize db:migrate:undo --env staging",
+    "db:migrate:test:undo:all": "sequelize db:migrate:undo:all --env test",
+    "db:seed:stage": "sequelize db:seed:all --env staging",
+    "db:migrate:prod:undo": "sequelize db:migrate:undo --env production",
+    "db:migrate:prod": "sequelize db:migrate --env production",
+    "db:seed:prod": "sequelize db:seed:all --env production"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +38,8 @@
     "pg": "^8.12.0",
     "sequelize": "^6.37.3",
     "sequelize-cli": "^6.6.2",
+    "sequelize-values": "^1.1.0",
+    "underscore": "^1.13.7",
     "use-history": "^1.4.1"
   }
 }
